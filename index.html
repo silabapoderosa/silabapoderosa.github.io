@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Sílaba Tónica</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Product Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .btn:hover {
+      background-color: #555;
+    }
+
+    .word-display {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 5rem;
+      text-transform: uppercase;
+      animation: fade 0.5s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Presiona el botón para jugar</h1>
+    <button class="btn" onclick="showWord()">Mostrar palabra</button>
+    <div id="word-display" class="word-display"></div>
+  </div>
+
+  <script>
+    const words = [
+      { text: "Árbol", color: "red" },
+      { text: "Persona", color: "yellow" },
+      { text: "Café", color: "green" },
+      // Agrega más palabras según necesites
+    ];
+
+    function showWord() {
+      const randomWord = words[Math.floor(Math.random() * words.length)];
+      const wordDisplay = document.getElementById('word-display');
+      wordDisplay.style.backgroundColor = randomWord.color;
+      wordDisplay.style.display = 'flex';
+      wordDisplay.innerText = randomWord.text;
+
+      setTimeout(() => {
+        wordDisplay.style.display = 'none';
+      }, 2000); // Oculta la palabra después de 2 segundos
+    }
+  </script>
+</body>
+</html>
